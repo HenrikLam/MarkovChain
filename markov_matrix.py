@@ -1,5 +1,5 @@
 import numpy
-
+#Invariance sum of transitional probability of one state is always >= 0 and <= 1
 class markov_chain:
     def __init__(self,num_events):
         self.num_events = num_events
@@ -54,47 +54,3 @@ class markov_chain:
 
     def __str__(self):
         return ("Number of Events:" + str(self.num_events) + "\n" + str(self.trans_matrix))
-    
-
-#Testing
-"""
-#Test Initiating
-chain = markov_chain(3)
-#Test setTransition
-
-chain.setTransition(1,1,0.3)
-chain.printMatrix()
-try:
-    chain.setTransition(1,0,2)
-except:
-    print("Did not add 2")
-try:
-    chain.setTransition(1,0,0.7)
-except:
-    print("Failed for edge value of 1")
-try:
-    chain.setTransition(1,0,-0.1)
-except:
-    print("Did not add negative value")
-#Test __str__
-print(chain)
-"""
-# Example from wikipedia: https://en.wikipedia.org/wiki/Markov_chain
-try:
-    stock_market = markov_chain(3)
-    stock_market.setTransition(0,0,0.9)
-    stock_market.setTransition(0,1,0.075)
-    stock_market.setTransition(0,2,0.025)
-    stock_market.setTransition(1,0,0.15)
-    stock_market.setTransition(1,1,0.8)
-    stock_market.setTransition(1,2,0.05)
-    stock_market.setTransition(2,0,0.25)
-    stock_market.setTransition(2,1,0.25)
-    stock_market.setTransition(2,2,0.5)
-    stock_market.setState(1)
-    print(stock_market.current_state)
-    print(stock_market)
-    stock_market.predict(3,True, True)
-    stock_market.predict(100,True, True)
-except:
-    print("Something went wrong")
